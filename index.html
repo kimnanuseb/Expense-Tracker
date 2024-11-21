@@ -27,12 +27,15 @@
             </header>
 
             <main>
+                <!-- Overview Section -->
                 <div class="form" id="overviewSection">
                     <input type="number" id="amount" placeholder="Amount (e.g., 50)" />
                     <input type="text" id="description" placeholder="Description (e.g., Lunch)" />
                     <input type="text" id="category" placeholder="Category (e.g., Food)" />
                     <select id="currency">
                         <option value="USD">USD</option>
+                        <option value="ZAR">ZAR </option>
+                        <option value="NAD">NAD </option>
                         <option value="EUR">EUR</option>
                         <option value="INR">INR</option>
                         <option value="GBP">GBP</option>
@@ -42,7 +45,7 @@
 
                 <!-- Expense summary -->
                 <div class="summary" id="summarySection">
-                    <h2>Total Expenses: $<span id="total">0.00</span></h2>
+                    <h2>Total Expenses: <span id="total">0.00</span></h2>
                 </div>
 
                 <!-- Expense List -->
