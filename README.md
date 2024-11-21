@@ -10,7 +10,7 @@ A simple and functional expense tracker to help you manage your daily expenses e
 
 ## Live App
 You can **use** the app to track your expenses here:  
-👉 [Expense Tracker App](https://kimnanuseb.github.io/expense-tracker)  
+👉 [Expense Tracker App](https://kimnanuseb.github.io/Expense-Tracker/)  
 
 **Note**:  
 The source code **cannot be copied, modified, or reused without permission**.
