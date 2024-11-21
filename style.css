@@ -10,13 +10,13 @@ body {
     background-color: #fff;
     color: #333;
     display: flex;
+    height: 100vh;
     flex-direction: column;
-    min-height: 100vh;
+    justify-content: flex-start;
 }
 
 .container {
     display: flex;
-    flex: 1;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -64,11 +64,8 @@ body {
 .main-content {
     margin-left: 250px;
     padding: 20px;
-    flex: 1;
     width: 100%;
     transition: margin-left 0.3s ease-in-out;
-    overflow-y: auto;  /* Allow scrolling for long content */
-    max-height: 100vh; /* Prevent it from overflowing beyond the screen */
 }
 
 header {
@@ -113,8 +110,6 @@ button:hover {
 /* Expense List */
 .expenses-list {
     margin-top: 30px;
-    max-height: 300px;
-    overflow-y: auto;  /* Make the expense list scrollable */
 }
 
 .expenses-list h3 {
