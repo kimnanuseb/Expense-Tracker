@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden; /* Ensure no horizontal scroll */
 }
 
 .container {
@@ -21,6 +22,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    flex-direction: row;
+    position: relative;
 }
 
 .sidebar {
@@ -66,8 +69,8 @@ body {
     padding: 20px;
     width: 100%;
     transition: margin-left 0.3s ease-in-out;
-    overflow-y: auto;
-    max-height: 100vh; /* Allow scrolling */
+    max-height: 100vh; /* Ensures content doesn't overflow the page */
+    overflow-y: auto; /* Enables scrolling only when needed */
 }
 
 header {
@@ -116,7 +119,7 @@ button:hover {
 .expenses-list {
     margin-top: 30px;
     max-height: 300px;
-    overflow-y: auto;
+    overflow-y: auto; /* Make the expense list scrollable */
 }
 
 .expenses-list h3 {
