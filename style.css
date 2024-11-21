@@ -6,27 +6,29 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f4f7fb;
+    font-family: 'Arial', sans-serif;
+    background: #f9f9f9; /* Dominant white */
     color: #333;
     display: flex;
     height: 100vh;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
+/* Container */
 .container {
     display: flex;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0;
     flex: 1;
 }
 
+/* Sidebar */
 .sidebar {
     width: 250px;
-    background: #008080;
+    background: #00796b; /* Teal color */
     color: white;
     padding: 20px;
     display: flex;
@@ -36,7 +38,7 @@ body {
     height: 100%;
     left: 0;
     top: 0;
-    transition: transform 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar nav ul {
@@ -65,61 +67,71 @@ body {
 /* Main content area */
 .main-content {
     margin-left: 250px;
-    padding: 20px;
-    flex: 1;
+    padding: 40px;
     width: 100%;
     transition: margin-left 0.3s ease;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Header */
 header {
     text-align: center;
     margin-bottom: 20px;
 }
 
 header h1 {
-    color: #00796b;
+    color: #00796b; /* Blue/teal */
     font-size: 36px;
-    font-weight: bold;
 }
 
+/* Form Styles */
 .form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 input, select, button {
-    padding: 15px;
+    padding: 12px;
     font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     width: 100%;
     box-sizing: border-box;
-    transition: background-color 0.3s;
-}
-
-input, select {
-    background-color: #f9f9f9;
 }
 
 button {
-    background-color: #00796b;
+    background: #00796b; /* Teal button */
     color: white;
     border: none;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #004d40;
+    background: #004d40;
 }
 
-.summary, .expenses-list {
-    margin-top: 30px;
+/* Summary Section */
+.summary {
+    margin-top: 20px;
+    text-align: center;
 }
 
-.summary h2, .expenses-list h3 {
-    font-size: 22px;
+.summary h2 {
+    font-size: 24px;
+    color: #00796b;
+}
+
+/* Expenses List Section */
+.expenses-list {
+    margin-top: 40px;
+}
+
+.expenses-list h3 {
+    font-size: 18px;
     color: #00796b;
 }
 
@@ -130,57 +142,48 @@ button:hover {
 #expenseList li {
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#expenseList li:hover {
-    transform: scale(1.05);
-}
-
-#expenseList button {
-    background-color: #f44336;
+#expenseList li button {
+    background: #e57373; /* Red button */
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 5px 12px;
     cursor: pointer;
-    border-radius: 50%;
-    font-size: 18px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background 0.3s;
 }
 
-#expenseList button:hover {
-    background-color: #d32f2f;
+#expenseList li button:hover {
+    background: #d32f2f;
 }
 
-footer {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 16px;
-    color: #888;
-}
-
+/* Charts Section */
 .charts {
-    margin-top: 30px;
+    margin-top: 50px;
     text-align: center;
     max-width: 100%;
-    height: 300px;
+    height: 400px;
 }
 
 canvas {
     width: 100%;
-    height: 300px;
+    height: 400px;
 }
 
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
-        padding: 0;
     }
 
     .sidebar {
@@ -190,13 +193,9 @@ canvas {
         transform: translateX(-100%);
     }
 
-    .sidebar nav ul li button {
-        font-size: 16px;
-    }
-
     .main-content {
         margin-left: 0;
-        padding: 15px;
+        padding: 20px;
     }
 
     .form input,
@@ -207,25 +206,5 @@ canvas {
 
     .charts {
         margin-top: 20px;
-    }
-}
-
-/* Responsive for very small devices */
-@media screen and (max-width: 480px) {
-    header h1 {
-        font-size: 28px;
-    }
-
-    .summary h2 {
-        font-size: 18px;
-    }
-
-    #expenseList li {
-        flex-direction: column;
-        text-align: left;
-    }
-
-    #expenseList li span {
-        font-size: 14px;
     }
 }
