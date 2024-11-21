@@ -10,18 +10,65 @@ body {
     background: #f5f5f5;
     color: #333;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container {
-    background: white;
-    width: 90%;
-    max-width: 600px;
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+.sidebar {
+    width: 250px;
+    background: #00796b;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar nav ul li button {
+    background: transparent;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.sidebar nav ul li button:hover {
+    background: #004d40;
+}
+
+/* Main content area */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+    width: 100%;
+    transition: margin-left 0.3s ease;
 }
 
 header {
@@ -45,7 +92,8 @@ input, select, button {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: calc(50% - 10px);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 button {
@@ -61,23 +109,13 @@ button:hover {
     background: #00574b;
 }
 
-.summary {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.summary h2 {
-    font-size: 20px;
-    color: #00796b;
-}
-
-.expenses-list {
+.summary, .expenses-list {
     margin-top: 20px;
 }
 
-.expenses-list h3 {
-    color: #555;
-    margin-bottom: 10px;
+.summary h2, .expenses-list h3 {
+    font-size: 18px;
+    color: #00796b;
 }
 
 #expenseList {
@@ -95,9 +133,19 @@ button:hover {
     align-items: center;
 }
 
-#expenseList li span {
+#expenseList button {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
     font-size: 14px;
-    color: #555;
+    transition: background 0.3s;
+}
+
+#expenseList button:hover {
+    background: darkred;
 }
 
 footer {
@@ -105,4 +153,70 @@ footer {
     margin-top: 20px;
     font-size: 14px;
     color: #888;
+}
+
+.charts {
+    margin-top: 30px;
+    text-align: center;
+    max-width: 100%;
+    height: 300px;
+}
+
+canvas {
+    width: 100%;
+    height: 300px;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        transform: translateX(-100%);
+    }
+
+    .sidebar nav ul li button {
+        font-size: 16px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .form input,
+    .form select,
+    .form button {
+        width: 100%;
+    }
+
+    .charts {
+        margin-top: 20px;
+    }
+}
+
+/* Responsive for very small devices */
+@media screen and (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    .summary h2 {
+        font-size: 16px;
+    }
+
+    #expenseList li {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    #expenseList li span {
+        font-size: 12px;
+    }
 }
