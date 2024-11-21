@@ -11,11 +11,6 @@ const expenseChart = document.getElementById('expenseChart');
 // Initialize expenses array
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-// Handle section navigation
-const overviewSection = document.getElementById('overviewSection');
-const categoriesSection = document.getElementById('categoriesSection');
-const reportsSection = document.getElementById('chartsSection');
-
 // Function to calculate total expenses
 function calculateTotal() {
     const total = expenses.reduce((sum, expense) => sum + expense.amount, 0);
@@ -88,8 +83,8 @@ function renderChart() {
         datasets: [{
             label: 'Expenses',
             data: values,
-            backgroundColor: '#4caf50', // Green
-            borderColor: '#388e3c', // Dark Green
+            backgroundColor: '#4caf50',
+            borderColor: '#388e3c',
             borderWidth: 1
         }]
     };
