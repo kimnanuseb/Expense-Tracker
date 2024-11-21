@@ -1,229 +1,71 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    <li><button id="overviewBtn">Overview</button></li>
+                    <li><button id="categoriesBtn">Categories</button></li>
+                    <li><button id="reportsBtn">Reports</button></li>
+                </ul>
+            </nav>
+        </div>
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #fff;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden; /* Ensure no horizontal scroll */
-}
+        <!-- Main content area -->
+        <div class="main-content">
+            <header>
+                <h1>Expense Tracker</h1>
+            </header>
 
-.container {
-    display: flex;
-    flex: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    flex-direction: row;
-    position: relative;
-}
+            <main>
+                <!-- Overview Section -->
+                <div class="form" id="overviewSection">
+                    <input type="number" id="amount" placeholder="Amount (e.g., 50)" />
+                    <input type="text" id="description" placeholder="Description (e.g., Lunch)" />
+                    <input type="text" id="category" placeholder="Category (e.g., Food)" />
+                    <select id="currency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="INR">INR</option>
+                        <option value="GBP">GBP</option>
+                        <option value="ZAR">ZAR</option>
+                        <option value="NAD">NAD</option>
+                    </select>
+                    <button id="addExpense">Add Expense</button>
+                </div>
 
-.sidebar {
-    width: 250px;
-    background-color: #00796b;
-    color: #fff;
-    padding: 20px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    transition: transform 0.3s ease-in-out;
-}
+                <!-- Expense summary -->
+                <div class="summary" id="summarySection">
+                    <h2>Total Expenses: <span id="total">0.00</span></h2>
+                </div>
 
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-}
+                <!-- Expense List -->
+                <div class="expenses-list" id="expensesListSection">
+                    <h3>Expense List:</h3>
+                    <ul id="expenseList"></ul>
+                </div>
 
-.sidebar nav ul li {
-    margin-bottom: 20px;
-}
+                <!-- Graph (Reports) -->
+                <div class="charts" id="chartsSection">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </main>
 
-.sidebar nav ul li button {
-    background: transparent;
-    color: white;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 12px;
-    text-align: left;
-    width: 100%;
-    transition: background 0.3s;
-}
+            <footer>
+                <p>Powered by Giovanni Nanuseb</p>
+            </footer>
+        </div>
+    </div>
 
-.sidebar nav ul li button:hover {
-    background-color: #004d40;
-}
-
-/* Main content area */
-.main-content {
-    margin-left: 250px;
-    padding: 20px;
-    width: 100%;
-    transition: margin-left 0.3s ease-in-out;
-    max-height: 100vh; /* Ensures content doesn't overflow the page */
-    overflow-y: auto; /* Enables scrolling only when needed */
-}
-
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-header h1 {
-    color: #00796b;
-    font-size: 2rem;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    background: #f9f9f9;
-}
-
-input, select, button {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #00796b;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #004d40;
-}
-
-/* Expense List */
-.expenses-list {
-    margin-top: 30px;
-    max-height: 300px;
-    overflow-y: auto; /* Make the expense list scrollable */
-}
-
-.expenses-list h3 {
-    color: #00796b;
-    font-size: 1.5rem;
-}
-
-#expenseList {
-    list-style: none;
-    padding: 0;
-}
-
-#expenseList li {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    width: 100%;
-}
-
-#expenseList button {
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 12px;
-    transition: background-color 0.3s;
-}
-
-#expenseList button:hover {
-    background-color: #b71c1c;
-}
-
-/* Total Summary */
-.summary {
-    margin-top: 20px;
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-.summary h2 {
-    color: #00796b;
-}
-
-/* Charts Section */
-.charts {
-    margin-top: 40px;
-    text-align: center;
-    max-width: 100%;
-}
-
-canvas {
-    width: 100%;
-    height: 300px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .sidebar {
-        width: 100%;
-        position: relative;
-        height: auto;
-        transform: translateX(-100%);
-    }
-
-    .main-content {
-        margin-left: 0;
-        padding: 15px;
-    }
-
-    .form input,
-    .form select,
-    .form button {
-        width: 100%;
-    }
-
-    #expenseList li {
-        flex-direction: column;
-        text-align: left;
-    }
-}
-
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 1.5rem;
-    }
-
-    .summary h2 {
-        font-size: 1rem;
-    }
-
-    #expenseList li {
-        font-size: 12px;
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
