@@ -10,13 +10,13 @@ body {
     background-color: #fff;
     color: #333;
     display: flex;
-    height: 100vh;
     flex-direction: column;
-    justify-content: flex-start;
+    min-height: 100vh;
 }
 
 .container {
     display: flex;
+    flex: 1;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -66,6 +66,8 @@ body {
     padding: 20px;
     width: 100%;
     transition: margin-left 0.3s ease-in-out;
+    overflow-y: auto;
+    max-height: 100vh; /* Allow scrolling */
 }
 
 header {
@@ -83,6 +85,9 @@ header h1 {
     flex-direction: column;
     gap: 15px;
     margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
 }
 
 input, select, button {
@@ -110,6 +115,8 @@ button:hover {
 /* Expense List */
 .expenses-list {
     margin-top: 30px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .expenses-list h3 {
@@ -132,6 +139,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
+    width: 100%;
 }
 
 #expenseList button {
@@ -141,7 +149,7 @@ button:hover {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 12px;
     transition: background-color 0.3s;
 }
 
