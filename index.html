@@ -5,37 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js -->
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Expense Tracker</h1>
-        </header>
-        <main>
-            <div class="form">
-                <input type="number" id="amount" placeholder="Amount (e.g., 50)" />
-                <input type="text" id="description" placeholder="Description (e.g., Lunch)" />
-                <select id="category">
-                    <option value="Food">Food</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Shopping">Shopping</option>
-                    <option value="Bills">Bills</option>
-                    <option value="Other">Other</option>
-                </select>
-                <button id="addExpense">Add Expense</button>
-            </div>
-            <div class="summary">
-                <h2>Total Expenses: $<span id="total">0.00</span></h2>
-            </div>
-            <div class="expenses-list">
-                <h3>Expense List:</h3>
-                <ul id="expenseList"></ul>
-            </div>
-        </main>
-        <footer>
-            <p>Powered by Giovanni Nanuseb</p>
-        </footer>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <nav>
+                <ul>
+                    <li><button id="overviewBtn">Overview</button></li>
+                    <li><button id="categoriesBtn">Categories</button></li>
+                    <li><button id="reportsBtn">Reports</button></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main content area -->
+        <div class="main-content">
+            <header>
+                <h1>Expense Tracker</h1>
+            </header>
+
+            <main>
+                <div class="form" id="overviewSection">
+                    <input type="number" id="amount" placeholder="Amount (e.g., 50)" />
+                    <input type="text" id="description" placeholder="Description (e.g., Lunch)" />
+                    <input type="text" id="category" placeholder="Category (e.g., Food)" />
+                    <select id="currency">
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="INR">INR</option>
+                        <option value="GBP">GBP</option>
+                    </select>
+                    <button id="addExpense">Add Expense</button>
+                </div>
+
+                <!-- Expense summary -->
+                <div class="summary" id="summarySection">
+                    <h2>Total Expenses: $<span id="total">0.00</span></h2>
+                </div>
+
+                <!-- Expense List -->
+                <div class="expenses-list" id="expensesListSection">
+                    <h3>Expense List:</h3>
+                    <ul id="expenseList"></ul>
+                </div>
+
+                <!-- Graph (Reports) -->
+                <div class="charts" id="chartsSection">
+                    <canvas id="expenseChart"></canvas>
+                </div>
+            </main>
+
+            <footer>
+                <p>Powered by Giovanni Nanuseb</p>
+            </footer>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
