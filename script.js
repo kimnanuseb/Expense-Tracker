@@ -28,7 +28,7 @@ function renderExpenses() {
 
     expenses.forEach((expense, index) => {
         const li = document.createElement('li');
-        const date = new Date(expense.timestamp).toLocaleDateString(); // Fix for valid date
+        const date = new Date(expense.timestamp).toLocaleString(); // Format timestamp to readable date
         li.innerHTML = `
             ${expense.description} - ${currencyInput.value} ${expense.amount.toFixed(2)} <span>(${expense.category})</span> <span>${date}</span>
             <button onclick="deleteExpense(${index})">❌</button>
@@ -88,8 +88,8 @@ function renderChart() {
         datasets: [{
             label: 'Expenses',
             data: values,
-            backgroundColor: '#4caf50',
-            borderColor: '#388e3c',
+            backgroundColor: '#4caf50', // Green
+            borderColor: '#388e3c', // Dark Green
             borderWidth: 1
         }]
     };
